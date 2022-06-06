@@ -118,5 +118,8 @@ this.router.navigateByUrl("/viewall")
 	viewallpro(){
 		this.router.navigateByUrl("/promotion")
 			}
+			gameDetail(){
+				this.router.navigateByUrl("gamedetail");
+			}
 
 }

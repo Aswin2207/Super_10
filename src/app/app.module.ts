@@ -15,6 +15,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { PromotionsComponent } from './pages/promotions/promotions.component';
 import { PromotioncardComponent } from './components/promotioncard/promotioncard.component';
 import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.component';
+import { ChatwidgetComponent } from './components/chatwidget/chatwidget.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -25,7 +26,8 @@ import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.comp
   GamedetailComponent,
   PromotionsComponent,
   PromotioncardComponent,
-  PromotioninfoComponent
+  PromotioninfoComponent,
+  ChatwidgetComponent
 	],
 	imports: [
 		BrowserModule,
