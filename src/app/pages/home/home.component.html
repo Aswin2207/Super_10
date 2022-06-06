@@ -23,6 +23,9 @@
 		<mat-tab label="LIVE"> 
 			LIVE
 		</mat-tab>
+		<mat-tab label="Promotions" (click)="viewallpro()"> 
+			Promotions
+		</mat-tab>
 	  </mat-tab-group>
 	  <div class="gameslides mb-5">
 		<div class="d-flex justify-content-between text-white">
@@ -57,6 +60,19 @@
 		<div class="d-flex justify-content-between text-white">
 			<h5>Live</h5>
 			<p (click)="viewall()">View all</p>
+		</div>
+		<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideGamesConfig"
+			(init)="slickInit()" (breakpoint)="breakpoint()" (afterChange)="afterChange()"
+			(beforeChange)="beforeChange()">
+			<div ngxSlickItem *ngFor="let slide of gameSlides" class="slide">
+				<img src="{{ slide.img }}" alt="" width="100%">
+			</div>
+		</ngx-slick-carousel>
+	</div>
+	<div class="gameslides mb-5">
+		<div class="d-flex justify-content-between text-white">
+			<h5>Promotions</h5>
+			<p (click)="viewallpro()">View all</p>
 		</div>
 		<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideGamesConfig"
 			(init)="slickInit()" (breakpoint)="breakpoint()" (afterChange)="afterChange()"

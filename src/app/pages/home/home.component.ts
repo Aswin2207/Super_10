@@ -115,5 +115,8 @@ export class HomeComponent implements OnInit {
 	viewall(){
 this.router.navigateByUrl("/viewall")
 	}
+	viewallpro(){
+		this.router.navigateByUrl("/promotion")
+			}
 
 }
