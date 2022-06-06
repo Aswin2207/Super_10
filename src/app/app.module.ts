@@ -12,6 +12,9 @@ import { ViewallComponent } from './pages/viewall/viewall.component';
 import { GamedetailComponent } from './pages/gamedetail/gamedetail.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {MatTabsModule} from '@angular/material/tabs';
+import { PromotionsComponent } from './pages/promotions/promotions.component';
+import { PromotioncardComponent } from './components/promotioncard/promotioncard.component';
+import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -19,7 +22,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 		FooterComponent,
   HomeComponent,
   ViewallComponent,
-  GamedetailComponent
+  GamedetailComponent,
+  PromotionsComponent,
+  PromotioncardComponent,
+  PromotioninfoComponent
 	],
 	imports: [
 		BrowserModule,
