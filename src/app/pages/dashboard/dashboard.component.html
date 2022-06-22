@@ -1,1 +1,61 @@
-<p>dashboard works!</p>
+<div class="navbar d-flex justify-content-between align-items-center p-2">
+	<div (click)="home()">
+		<img src="../../../assets/logo.jfif" alt="logo" class="logo">
+	</div>
+	<div>
+		<!-- <input placeholder="Search" class="d-none d-md-inline" /> -->
+		<button >Home</button>
+		<button>Blog</button>
+		<button>About</button>
+		<button>Contact</button>
+        <img class="avatar" src="https://super10.clickonsave.com/assets/images/avatar.png">
+		
+	</div>
+</div>
+<div class="container-fluid my-5 careds">
+	<div class="info-content">
+<div class="row">
+    <div class="col-md-3 cardList" *ngFor="let item of cardList">
+<!-- <div class="card" >
+    <div class="card-body"> -->
+        <div class="dashboard">
+            <div class="sidecard"></div>
+            <div class="content">
+                <div>
+                    {{item.name}}
+                   </div>
+                   <small>{{item.amt}}</small>
+            </div>
+        </div>
+  
+    </div>
+  <!-- </div>
+</div> -->
+</div>
+</div>
+</div>
+<div class="container">
+    <h4 class="title mb-3">My Latest Beds</h4>
+    <table>
+        <tr>
+          <th>Match</th>
+          <th>Question</th>
+          <th>OPtion</th>
+          <th>Betted</th>
+          <th>Reward</th>
+          <th>Status</th>
+          <th>More</th>
+        </tr>
+        <tr>
+          <td colspan="100%" class="text-center">No Data</td>
+          <!-- <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td> -->
+        </tr>
+        </table>
+
+</div>
+<app-footer></app-footer>

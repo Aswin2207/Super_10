@@ -19,6 +19,7 @@ import { ChatwidgetComponent } from './components/chatwidget/chatwidget.componen
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from './services/angular-material.module';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -43,7 +44,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 		MatTabsModule,
 		HttpClientModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		AngularMaterialModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

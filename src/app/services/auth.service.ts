@@ -14,9 +14,6 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: any) {
-    let params = new HttpParams()
-    .set('username', data.username)
-    .set('password', data.password)
-      return this.http.post(`${this.BASE_URL}/login/`, params, { headers: this.headers });
+      return this.http.post(`${this.BASE_URL}/login?username=`+data.username+'&password='+data.password, { headers: this.headers });
   }
 }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -10,12 +11,13 @@ import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '
 	providers: [NgbModalConfig, NgbModal]
 })
 export class HeaderComponent implements OnInit {
-	signInForm:FormGroup
+	signInForm:FormGroup;
+	loginBool:boolean=true;
 
 	constructor(config: NgbModalConfig,
 		 private modalService: NgbModal,
 		  public router:Router,
-		  public auth:AuthService) {
+		  public auth:AuthService,private snackBar: MatSnackBar) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
 		config.keyboard = false;
@@ -29,6 +31,9 @@ export class HeaderComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		if(localStorage.getItem('token')){
+			this.loginBool=false;
+		}
 	}
 
 	open(login: any) {
@@ -42,17 +47,33 @@ export class HeaderComponent implements OnInit {
 this.router.navigateByUrl("/home")
 	}
 	loginUser(){
+		
 		console.log(this.signInForm.value)
-		let data={
-			"username":"tivyaananth94@gmail.com",
-			"password":"7200900047"
-		}
-		this.auth.login(data).subscribe(res=>{
+		// let data={
+		// 	"username":"tivyaananth94@gmail.com",
+		// 	"password":"7200900047"
+		// }
+		this.auth.login(this.signInForm.value).subscribe((res:any)=>{
+			if(res.code==401 || res.code!=200 ){
+			this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'end' });
+			}
+			else{
 
+			
+			this.modalService.dismissAll();
+			localStorage.setItem("token","1")
+			this.snackBar.open(`successfully login`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'end' });
+			this.router.navigateByUrl("/dashboard")
+			}
 		}, err=>{
-			console.log(err)
+			this.modalService.dismissAll();
+			this.snackBar.open(`Please enter Valid data`, '', { duration: 3000, verticalPosition: 'bottom', horizontalPosition: 'end' });
 		})
 
+	}
+	logout(){
+		localStorage.clear();
+		this.loginBool=true
 	}
 
 }
