@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  // private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   private BASE_URL = environment.base_url;
   productSelectionSaved:boolean=true;
 
@@ -17,6 +17,6 @@ export class AuthService {
     let params = new HttpParams()
     .set('username', data.username)
     .set('password', data.password)
-      return this.http.post(`${this.BASE_URL}/login/?`, params);
+      return this.http.post(`${this.BASE_URL}/login/?`, params, { headers: this.headers });
   }
 }
