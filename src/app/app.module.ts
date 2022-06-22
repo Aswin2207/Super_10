@@ -16,6 +16,9 @@ import { PromotionsComponent } from './pages/promotions/promotions.component';
 import { PromotioncardComponent } from './components/promotioncard/promotioncard.component';
 import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.component';
 import { ChatwidgetComponent } from './components/chatwidget/chatwidget.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -27,7 +30,8 @@ import { ChatwidgetComponent } from './components/chatwidget/chatwidget.componen
   PromotionsComponent,
   PromotioncardComponent,
   PromotioninfoComponent,
-  ChatwidgetComponent
+  ChatwidgetComponent,
+  DashboardComponent
 	],
 	imports: [
 		BrowserModule,
@@ -36,7 +40,10 @@ import { ChatwidgetComponent } from './components/chatwidget/chatwidget.componen
 		SlickCarouselModule,
 		MatInputModule,
 		BrowserAnimationsModule,
-		MatTabsModule
+		MatTabsModule,
+		HttpClientModule,
+		FormsModule,
+		ReactiveFormsModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

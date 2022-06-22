@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { GamedetailComponent } from './pages/gamedetail/gamedetail.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PromotioninfoComponent } from './pages/promotioninfo/promotioninfo.component';
@@ -24,6 +25,10 @@ const routes: Routes = [{
 {
 	path: 'promotion',
 	component: PromotionsComponent
+},
+{
+	path: 'dashboard',
+	component: DashboardComponent
 },
 {
 	path: 'promotion/promotioninfo',
