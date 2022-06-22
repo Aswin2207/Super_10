@@ -17,6 +17,6 @@ export class AuthService {
     let params = new HttpParams()
     .set('username', data.username)
     .set('password', data.password)
-      return this.http.post(`${this.BASE_URL}/login/?`, params, { headers: this.headers });
+      return this.http.post(`${this.BASE_URL}/login/`, params, { headers: this.headers });
   }
 }
