@@ -20,6 +20,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './services/angular-material.module';
+import { NavmenuComponent } from './navmenu/navmenu.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -32,7 +34,8 @@ import { AngularMaterialModule } from './services/angular-material.module';
   PromotioncardComponent,
   PromotioninfoComponent,
   ChatwidgetComponent,
-  DashboardComponent
+  DashboardComponent,
+  NavmenuComponent
 	],
 	imports: [
 		BrowserModule,
@@ -45,7 +48,8 @@ import { AngularMaterialModule } from './services/angular-material.module';
 		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
-		AngularMaterialModule
+		AngularMaterialModule,
+		NgxSpinnerModule
 	],
 	providers: [],
 	bootstrap: [AppComponent]

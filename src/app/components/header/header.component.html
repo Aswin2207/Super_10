@@ -60,19 +60,25 @@
 		<h4 class="modal-title" id="modal-basic-title">Register</h4>
 		<button class="btn-close" (click)="d('Cross click')"></button>
 	</div>
+	<form [formGroup]="registerForm">
 	<div class="modal-body">
 		<div>
 			<label>User Name</label>
-			<input class="form-control" />
+			<input class="form-control" formControlName="username" />
 		</div>
 		<div>
 			<label>Email</label>
-			<input class="form-control" />
+			<input class="form-control" formControlName="email" />
 		</div>
 		<div>
 			<label>Password</label>
-			<input class="form-control" />
+			<input class="form-control" formControlName="password" />
 		</div>
-		<button>Register</button>
+		<div>
+			<label>Phone Number</label>
+			<input class="form-control" formControlName="phoneNbr" />
+		</div>
+		<button (click)="registerUser()">Register</button>
 	</div>
+	</form>
 </ng-template>
