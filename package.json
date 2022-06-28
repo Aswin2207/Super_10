@@ -29,6 +29,7 @@
     "crypto-js": "^4.1.1",
     "http-build-query": "^0.7.0",
     "jquery": "^3.6.0",
+    "locutus": "^2.0.16",
     "ngx-slick-carousel": "^0.6.0",
     "ngx-spinner": "^13.0.0",
     "rxjs": "~7.5.0",

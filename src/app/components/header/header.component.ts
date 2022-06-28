@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroupDirective, NgForm, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxSpinnerService } from "ngx-spinner";
+import { GameapiService } from 'src/app/services/gameapi.service';
 @Component({
 	selector: 'app-header',
 	templateUrl: './header.component.html',
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 		 private modalService: NgbModal,
 		 private spinner: NgxSpinnerService,
 		  public router:Router,
+		  private gameService:GameapiService,
 		  public auth:AuthService,private snackBar: MatSnackBar) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
@@ -46,6 +48,9 @@ export class HeaderComponent implements OnInit {
 		if(localStorage.getItem('token')){
 			this.loginBool=false;
 		}
+		// this.gameService.getAllGames().subscribe(res=>{
+			
+		// })
 	}
 
 	open(login: any) {
