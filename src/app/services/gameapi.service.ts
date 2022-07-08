@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-var sha1 = require('sha-1');
-var crypto1 = require('crypto-js');
 var crypto = require('crypto-browserify');
 var httpBuildQuery = require('http-build-query');
 var uniqid = require('locutus/php/misc/uniqid');
@@ -15,6 +13,19 @@ var mt_rand = require('locutus/php/math/mt_rand');
 export class GameapiService {
   gameHeaders: any;
   stageURl = environment.game_stage_url;
+  list = {
+		freespin_valid_until_full_day: 0,
+		has_freespins: 0,
+		has_lobby: 1,
+		has_tables: 0,
+		image: "https://staging.slotegrator.com/api/index.php/image/get?hash=e88a563aed2cc6ddbfc263587def1d6d0e0eb145.png",
+		is_mobile: 1,
+		name: "Roulette",
+		provider: "Vivogaming",
+		technology: "HTML5",
+		type: "roulette",
+		uuid: "e88a563aed2cc6ddbfc263587def1d6d0e0eb145"
+	}
   defaultHeaderObj = {
 
   }
@@ -26,10 +37,22 @@ export class GameapiService {
   getAllGames() {
 
     const authObj: object = {
-      'page': 1,
+      'page': 2,
     };
     this.gameHeaders = this.xSignGenerate(authObj);
-    return this.http.get(`${this.stageURl}/games?page=1`, { headers: this.gameHeaders });
+    return this.http.get(`${this.stageURl}/games?page=2`, { headers: this.gameHeaders });
+
+  }
+  getGameLobby() {
+     
+    const authObj: object = {
+       'game_uuid':"9a908dd5014463bc494bb4052e32fe4eae1987e5",
+       "currency":"EUR"
+
+    };
+    this.gameHeaders = this.xSignGenerate(authObj);
+    console.log(this.gameHeaders)
+    return this.http.get(`${this.stageURl}/games/lobby?game_uuid=9a908dd5014463bc494bb4052e32fe4eae1987e5&currency=EUR`, { headers: this.gameHeaders });
 
   }
 
@@ -38,10 +61,11 @@ export class GameapiService {
     const uniqId = uniqid(randomNbr, true)
     const uniqId_string = MD5(uniqId).toString();
     data = {
-      "X-Merchant-Id": 'ae88ab8ee84ff40a76f1ec2e0f7b5caa', "X-Nonce": uniqId_string,
-      "X-Timestamp": Math.floor(Date.now() / 1000.).toString(),...data
+      "X-Merchant-Id": 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',
+      "X-Timestamp": Math.floor(Date.now() / 1000.).toString(), "X-Nonce": uniqId_string,...data
     }
     const xSignParams = httpBuildQuery(data);
+    console.log(xSignParams)
     const xSign = crypto.createHmac("sha1", "4953e491031d3f9e7545223885cf43a7403f14cb").update(xSignParams.toString()).digest('hex');
     return new HttpHeaders({
       'X-Merchant-Id': 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',

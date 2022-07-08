@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { GameapiService } from 'src/app/services/gameapi.service';
 
 @Component({
 	selector: 'app-home',
@@ -9,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HomeComponent implements OnInit {
 	tabindex:number=-1;
-	constructor(public router:Router,private auth:AuthService) { }
+	constructor(public router:Router,private auth:AuthService,private game:GameapiService) { }
 
 	ngOnInit(): void {
 		console.log('hai')
@@ -20,14 +21,14 @@ export class HomeComponent implements OnInit {
 
 
 	slides = [
-		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2016/01/DB-Mobile-WB.png" },
+		{ img: "https://staging.slotegrator.com/api/index.php/image/get?hash=e88a563aed2cc6ddbfc263587def1d6d0e0eb145.png" },
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2022/05/spinomenalseries-mob.jpg" },
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2022/05/weekendhunt-mob.jpg" },
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2022/05/xxxtreme-mobile.jpg" }
 	];
 
 	gameSlides = [
-		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2022/01/zeusthumb.png"},
+		{ img: "https://staging.slotegrator.com/api/index.php/image/get?hash=e88a563aed2cc6ddbfc263587def1d6d0e0eb145.png"},
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2020/04/TopCard-Thumb.jpg" },
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2020/11/DragonPearls.jpg" },
 		{ img: "https://db.sterlingcdn.com/wp-content/uploads/sites/5/2022/05/BookdelSolThumb.jpg" },
@@ -126,5 +127,14 @@ this.router.navigateByUrl("/viewall")
 			gameDetail(){
 				this.router.navigateByUrl("gamedetail");
 			}
+  gameInit(i:any){
+	console.log(i)
+  if(i==0){
+    this.game.getGameLobby().subscribe(res=>{
+    console.log(res)
+	});
+
+  }
+  }
 
 }
