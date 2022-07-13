@@ -44,15 +44,31 @@ export class GameapiService {
 
   }
   getGameLobby() {
-     
     const authObj: object = {
-       'game_uuid':"9a908dd5014463bc494bb4052e32fe4eae1987e5",
-       "currency":"EUR"
+      "currency":"EUR",
+       'game_uuid':"e88a563aed2cc6ddbfc263587def1d6d0e0eb145"
 
     };
     this.gameHeaders = this.xSignGenerate(authObj);
-    console.log(this.gameHeaders)
-    return this.http.get(`${this.stageURl}/games/lobby?game_uuid=9a908dd5014463bc494bb4052e32fe4eae1987e5&currency=EUR`, { headers: this.gameHeaders });
+    return this.http.get(`${this.stageURl}/games/lobby?game_uuid=e88a563aed2cc6ddbfc263587def1d6d0e0eb145&currency=EUR`, { headers: this.gameHeaders });
+
+  }
+
+  fetchGameUrl(data:any) {
+    console.log(data)
+    var token:any=JSON.parse(localStorage.getItem('token') !)
+    const authObj: object = {
+       'game_uuid':"e88a563aed2cc6ddbfc263587def1d6d0e0eb145",
+       'player_id':"demo_123",
+       'player_name':"demo",
+       "currency":"EUR",
+       'session_id':token,
+       'lobby_data':data
+
+
+    };
+    this.gameHeaders = this.xSignGenerate(authObj);
+    return this.http.post(`${this.stageURl}/games/init`,authObj, { headers: this.gameHeaders });
 
   }
 
@@ -61,8 +77,8 @@ export class GameapiService {
     const uniqId = uniqid(randomNbr, true)
     const uniqId_string = MD5(uniqId).toString();
     data = {
-      "X-Merchant-Id": 'ae88ab8ee84ff40a76f1ec2e0f7b5caa',
-      "X-Timestamp": Math.floor(Date.now() / 1000.).toString(), "X-Nonce": uniqId_string,...data
+      "X-Merchant-Id": 'ae88ab8ee84ff40a76f1ec2e0f7b5caa', "X-Nonce": uniqId_string,
+      "X-Timestamp": Math.floor(Date.now() / 1000.).toString(),...data
     }
     const xSignParams = httpBuildQuery(data);
     console.log(xSignParams)

@@ -128,10 +128,14 @@ this.router.navigateByUrl("/viewall")
 				this.router.navigateByUrl("gamedetail");
 			}
   gameInit(i:any){
-	console.log(i)
   if(i==0){
-    this.game.getGameLobby().subscribe(res=>{
-    console.log(res)
+    this.game.getGameLobby().subscribe((res:any)=>{
+    // console.log(res.lobby[0])
+	if(res){
+		this.game.fetchGameUrl(res.lobby[0].lobbyData).subscribe(data=>{
+			console.log(data)
+		})
+	}
 	});
 
   }
