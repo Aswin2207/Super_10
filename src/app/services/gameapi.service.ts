@@ -62,7 +62,7 @@ export class GameapiService {
        'player_id':"demo_123",
        'player_name':"demo",
        "currency":"EUR",
-       'session_id':token,
+       'session_id':'yfuwqurfuwtrquywuq1212121',
        'lobby_data':data
 
 
