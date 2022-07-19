@@ -132,8 +132,9 @@ this.router.navigateByUrl("/viewall")
     this.game.getGameLobby().subscribe((res:any)=>{
     // console.log(res.lobby[0])
 	if(res){
-		this.game.fetchGameUrl(res.lobby[0].lobbyData).subscribe(data=>{
+		this.game.fetchGameUrl(res.lobby[0].lobbyData).subscribe((data:any)=>{
 			console.log(data)
+			window.open(data.url);
 		})
 	}
 	});
