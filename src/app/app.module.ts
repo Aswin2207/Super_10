@@ -22,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from './services/angular-material.module';
 import { NavmenuComponent } from './navmenu/navmenu.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { GameViewComponent } from './game-view/game-view.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -35,7 +36,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   PromotioninfoComponent,
   ChatwidgetComponent,
   DashboardComponent,
-  NavmenuComponent
+  NavmenuComponent,
+  GameViewComponent
 	],
 	imports: [
 		BrowserModule,

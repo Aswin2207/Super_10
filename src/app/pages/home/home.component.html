@@ -38,7 +38,7 @@
 		<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideGamesConfig"
 			(init)="slickInit()" (breakpoint)="breakpoint()" (afterChange)="afterChange()"
 			(beforeChange)="beforeChange()">
-			<div ngxSlickItem *ngFor="let slide of gameSlides;let i=index" class="slide" (click)="gameInit(i)">
+			<div ngxSlickItem *ngFor="let slide of gameSlides;let i=index" class="slide" (click)="gameInit(slide)">
 				<img src="{{ slide.img }}" alt="" width="100%">
 			</div>
 		</ngx-slick-carousel>
@@ -99,5 +99,6 @@
 		</ngx-slick-carousel>
 	</div>
 </div>
+
 
 <app-footer></app-footer>
